@@ -1,0 +1,7 @@
+{
+    "type": "module",
+    "dependencies": {
+        "itertools": "^1.7.1",
+        "prompt-sync": "^4.2.0"
+    }
+}
