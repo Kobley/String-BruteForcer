@@ -1,21 +1,9 @@
 import itertools, time, string, random
+from BruteForcer.brute import BruteUtil
 
 nap = lambda x: time.sleep(x)
 
 s_baseCharset = string.ascii_letters+string.digits+"`~!@#$%^&*()_-+=[{]}|:;'\",<.>/?"
-
-def BruteForcer(password: str, charset: str):
-    f_start = time.time()
-    i_attempts = 0
-    for i in range(1, 27):
-        for letter in itertools.product(charset, repeat=i):
-            attempts += 1
-            guess = ''.join(letter)
-            print(guess)
-            if guess == password:
-                f_end = time.time()
-                f_timeDif = f_end - f_start
-                return (i_attempts, f_timeDif)
 
 def GenTestPass(length: int):
     return ''.join(random.choice(s_baseCharset) for _ in range(length))
@@ -36,8 +24,8 @@ def main():
     else:
         print("Invalid Choice... Try Again")
         main()
-    tries, timeAmount = BruteForcer(s_password, s_baseCharset)
-    print("Cracked Password %s in %s tries and %s seconds!" % (s_password, tries, timeAmount))
+    
+    BruteUtil(password=s_password, charset=s_baseCharset, verbose=True).Attempt()
 
 if __name__ == "__main__":
     main()
